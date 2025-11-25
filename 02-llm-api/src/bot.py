@@ -68,11 +68,16 @@ class ChatBot:
         }
     
     def add_message(self, role: str, content: str):
-        """Добавить сообщение в историю диалога."""
+        """Добавить сообщение в историю диалога с ограничением истории до 5 сообщений пользователя/ассистента (промпт сохраняется)"""
         self.conversation_history.append({
             "role": role,
             "content": content
         })
+        MAX_MESSAGES = 5  # максимальное количество сообщений в истории (без промпта)
+        # Если превышено максимальное количество сообщений (без учета промпта)
+        while len(self.conversation_history) > MAX_MESSAGES + 1:
+            # Сохраняем промпт (первый элемент), удаляем второе по счету (самое старое не-промптовое)
+            self.conversation_history.pop(1)
     
     def clear_history(self):
         """Очистить историю диалога."""
