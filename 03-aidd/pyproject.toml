@@ -1,0 +1,14 @@
+[project]
+name = "travel-assistant-bot"
+version = "0.1.0"
+description = "Telegram LLM travel assistant (MVP)"
+requires-python = ">=3.11"
+
+dependencies = [
+    "aiogram>=3.4.0,<4.0.0",
+    "openai>=1.40.0,<2.0.0",
+]
+
+[tool.uv]
+
+
